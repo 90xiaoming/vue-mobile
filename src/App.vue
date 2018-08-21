@@ -44,6 +44,7 @@ export default {
 <style lang="scss" scoped>
 .app-cintainer{
 	padding-top: 40px;
+	padding-bottom: 50px;
 	//去掉下面的横线
 	overflow-x: hidden;
 }

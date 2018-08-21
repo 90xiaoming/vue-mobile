@@ -7,7 +7,12 @@ import App from './App'
 import router from './router'
 Vue.use(Mint)
 Vue.config.productionTip = false
-
+// 导入时间格式化插件
+import moment from 'moment'
+//定义全局的过滤器
+Vue.filter('dateFormat',function(dataStr,pattern="YYYY-MM-DD HH:mm:ss"){
+  return moment(dataStr).format(pattern)
+})
 //引入min-ui
 import '../lib/mui/css/mui.min.css'
 //引入拓展css

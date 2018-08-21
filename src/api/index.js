@@ -8,3 +8,11 @@ axios.defaults.baseURL=baseURL
 export const getlunbotu =params =>{
     return axios.get('/api/getlunbo').then(res=>res.data)
 }
+//获取新闻列表
+export const getnewsList =params =>{
+    return axios.get('/api/getnewslist').then(res=>res.data)
+}
+//获取新闻详情
+// export const getnewsinfo =params =>{
+//     return axios.get('/api/getnew/:1').then(res=>res.data)
+// }
