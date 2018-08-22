@@ -1,18 +1,24 @@
 <template>
     <div class="newinfo-container">
-        <h3 class="title">新闻标题</h3>
+        <!-- 大标题 -->
+        <h3 class="title">{{newsinfo.title}}</h3>
+        <!-- 子标题 -->
         <p class="subtitle">
-            <span>发表时间：</span>
-            <span>点击：0次</span>
+            <span>发表时间：{{newsinfo.add_time  }}</span>
+            <span>点击：{{newsinfo.click}}</span>
         </p>
         <hr>
-
-        <div class="content">
-
-        </div>
+        <!-- 内容区域 -->
+        <div class="content" v-html="newsinfo.content"></div>
+         <!-- 评论子组件区域 -->
+        <comment-box :id="this.id">
+            
+        </comment-box>
     </div>
 </template>
 <script>
+//导入评论子组件
+import comment from '../subcomponents/comment'
 import {getnewsinfo} from '@/api';
 export default {
     data(){
@@ -26,12 +32,22 @@ export default {
    },
     methods:{
         getInfo(){
-            
+            getnewsinfo({id: this.id}).then(res => {
+                if(res.status===0){
+                   this.newsinfo = res.message[0];
+                   console.log( this.newsinfo)
+               }else{
+                   Toast('获取新闻列表失败')
+               }
+            })
         }
+    },
+   components:{ //注册子组件的节点
+        "comment-box":comment
     }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .newinfo-container{
     padding: 0 4px;
     .title{
@@ -46,6 +62,10 @@ export default {
         display: flex;
         justify-content: space-between;
     }
-    .content{}
+    .content{
+        img{
+            width:100%;
+        }
+    }
 }
 </style>

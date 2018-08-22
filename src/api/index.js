@@ -13,6 +13,10 @@ export const getnewsList =params =>{
     return axios.get('/api/getnewslist').then(res=>res.data)
 }
 //获取新闻详情
-// export const getnewsinfo =params =>{
-//     return axios.get('/api/getnew/:1').then(res=>res.data)
-// }
+export const getnewsinfo =params =>{ //params = {id: this.id}
+    return axios.get('/api/getnew/'+ params.id).then(res=>res.data)
+}
+//获取评论详情
+export const getcomment =params =>{
+    return axios.get(`/api/getcomments/${params.id}?pageindex=`+params.pageIndex).then(res=>res.data)
+}

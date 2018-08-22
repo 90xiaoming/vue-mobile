@@ -23,10 +23,10 @@ import 'mint-ui/lib/style.css'
 import { Header } from 'mint-ui';
 Vue.component(Header.name, Header);
 //轮播图组件
-import { Swipe, SwipeItem } from 'mint-ui';
+import { Swipe, SwipeItem,Button } from 'mint-ui';
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
-
+Vue.component(Button.name, Button)
 
 
 new Vue({
